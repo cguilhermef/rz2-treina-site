@@ -1,0 +1,339 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Nunito', sans-serif;
+}
+
+.logo {
+  background: transparent url("../img/treinafacil.svg") no-repeat 50% 50%/100%;
+  display: block;
+  height: 60px;
+  overflow: hidden;
+  outline: none;
+  margin: 0 auto;
+  padding: 0;
+  text-indent: -5000px;
+  width: 200px;
+}
+
+.intro {
+  color: #ff9500;
+  font-weight: 300;
+  font-size: 1.5rem;
+  max-width: 90%;
+  /* text-align: ; */
+}
+
+.btn-game {
+  background-color: gray;
+  border: 2px solid #331f0a;
+  border-radius: 21px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Raleway';
+  font-weight: 700;
+  line-height: 1;
+  padding: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  min-width: 120px;
+}
+.btn-game::before {
+  background-color: darkgray;
+  border-radius: 21px;
+  content: '';
+  left: 1px;
+  height: calc(100% - 4px);
+  position: absolute;
+  top: 0;
+  transition: all .2s;
+  z-index: 0;
+  width: calc(100% - 2px);
+}
+.btn-game:hover::before {
+  background-color: #666;
+}
+.btn-game__text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-game--primary {
+  background-color: #da7f00;
+}
+.btn-game--primary::before {
+  background-color: #ff9500;
+}
+.btn-game--primary:hover:not([disabled])::before {
+  background-color: #e78700
+}
+.btn-game--danger {
+  background-color: #d4392e;
+}
+.btn-game--danger::before {
+  background-color: #ff4337;
+}
+.btn-game--danger:hover::before {
+  background-color: #d4392e;
+}
+
+.status-bar {
+  align-items: center;
+  display: flex;
+  height: 23px;
+  left: 1rem;
+  max-width: 90%;
+  padding-left: 15px;
+  position: fixed;
+  top: 1rem;
+  width: 450px;
+  z-index: 10;
+}
+.status-bar__arrow {
+  height: 23px;;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+.status-bar__progress-bar {
+  background-color: #294766;
+  border-radius: 6px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.status-bar__progress::before {
+  border: 2px solid #0a1f33;
+  border-radius: 6px;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.status-bar__progress-bar-count {
+  background-color: #21d3ff;
+  border-radius: 6px 0 0 6px;
+  box-shadow: 1px -1px 0 2px #178fe6 inset, 0 3px 0 0px #99eeff inset;
+  height: 100%;
+  transition: width 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.status-bar__count {
+  align-items: center;
+  border: 2px solid #143d66;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #143d66;
+  display: inline-flex;
+  font-size: 18px;
+  font-weight: 700;
+  height: 29px;
+  justify-content: center;
+  margin-left: 10px;
+  position: relative;
+  width: 76px;
+}
+.status-bar__count::before {
+  background-color: #fff;
+  border-left: 2px solid #143d66;
+  border-radius: 4px 0 0 0;
+  border-top: 2px solid #143d66;
+  content: '';
+  height: 9px;
+  left: -6px;
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 7px;
+  width: 9px;
+  z-index: 1;
+}
+
+.section {
+  --animation-time: .75s;
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.section__content {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+}
+
+.section--main {
+  align-items: center;
+  background-color: #fff;
+  justify-content: center;
+  z-index: 1;
+}
+
+.section--main .section__content {
+  flex: 1 1 auto;
+  padding-top: 60px;
+  justify-content: space-between;
+}
+
+.section--mountain {
+  background: #5fc1ff url("../img/bg-montanha.jpg") no-repeat 50% 50%/cover;
+}
+.section--space {
+  background: #243378 url("../img/bg-espaco.jpg") no-repeat 56% 50%/cover;
+}
+
+.mv--enter-from-bottom {
+  animation: enterFromBottom var(--animation-time) cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translate(0, 0);
+}
+.mv--exit-to-bottom {
+  animation: exitToBottom var(--animation-time) cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translate(0, 100%);
+}
+.mv--enter-from-top {
+  animation: enterFromTop var(--animation-time) cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translate(0, 0);
+}
+.mv--exit-to-top {
+  animation: exitToTop var(--animation-time) cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translate(0, -100%);
+}
+
+.navigation {
+  position: fixed;
+  right: 1rem;
+  transform: translate(0, -50%);
+  top: 50%;
+  z-index: 10;
+}
+
+.navigation__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__item {
+  align-items: center;
+  background-color: #ff5a00;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-family: 'Raleway';
+  flex-flow: row;
+  font-size: 14px;
+  height: 24px;
+  justify-content: center;
+  padding-bottom: 2px;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .15);
+  transition: box-shadow 1s;
+  width: 24px;
+}
+
+.navigation__item:nth-child(1n+2) {
+  margin-top: 5px;
+}
+
+.navigation__item:hover,
+.navigation__item.--active {
+  cursor: pointer;
+  background-color: #df4f02;
+}
+.navigation__item.--active {
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .15);
+}
+.navigation__link {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+
+  .status-bar { 
+    height: 42px;
+    padding-left: 35px;
+  }
+  .status-bar__arrow {
+    height: auto;
+  }
+  .status-bar__count {
+    height: 42px;
+  }
+  .status-bar__count::before {
+    top: 14px;
+  }
+  .status-bar__progress-bar-count {
+    box-shadow: 3px -3px 0 2px #178fe6 inset, 0 6px 0 0px #99eeff inset;
+  }
+
+  .logo {
+    height: 90px;
+    width: 300px;
+  }
+  .intro {
+    font-size: 2rem;
+    max-width: 768px;
+    text-align: center;
+  }
+  .section--main .section__content {
+    flex: 0 1 auto;
+  }
+  .section--space {
+    background-position: 56% 50%;
+  }
+}
+
+@keyframes exitToTop {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -100%);
+  }
+}
+@keyframes exitToBottom {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes enterFromTop {
+  0% {
+    transform: translate(0, -100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes enterFromBottom {
+  0% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/** Modifiers **/
+.--mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
