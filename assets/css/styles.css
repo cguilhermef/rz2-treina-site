@@ -19,7 +19,6 @@ html {
 }
 
 .intro {
-  color: #ff9500;
   font-weight: 300;
   font-size: 1.5rem;
   max-width: 90%;
@@ -71,6 +70,24 @@ html {
 .btn-game--primary:hover:not([disabled])::before {
   background-color: #e78700
 }
+
+.btn-game--contrast {
+  background-color: #ddd;
+  border: none;
+  color: #ff9500;
+  text-transform: none;
+}
+.btn-game--contrast::before {
+  background-color: #fff;
+}
+.btn-game--contrast:hover {
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, .15);
+}
+.btn-game--contrast:hover:not([disabled])::before {
+  background-color: #f0f0f0;
+}
+
+
 .btn-game--danger {
   background-color: #d4392e;
 }
@@ -177,7 +194,8 @@ html {
 
 .section--main {
   align-items: center;
-  background-color: #fff;
+  background-color: #ff9500;
+  color: #fff;
   justify-content: center;
   z-index: 1;
 }
