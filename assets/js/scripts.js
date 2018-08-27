@@ -1,5 +1,6 @@
 $(document).ready(function() {
   Navigation();
+  BoardTips();
 });
 
 var Navigation = function() {
@@ -37,10 +38,6 @@ var Progress = function() {
         result = 100;
       }
       bar.css('width', `${ result }%`);
-      // if (actualIndex === nextIndex) {
-      //   count.text(`${ (actualIndex + 1) * 25 }%`);
-      //   return;
-      // }
       let start = actualIndex * 33;
       let end = nextIndex === 3 ? 100 : nextIndex * 33;
       timer = clearInterval(timer);
@@ -127,4 +124,59 @@ var Moving = function() {
       return this;
     }
   }
+}
+
+var BoardTips = function() {
+  const contents$ = $('.js-content');
+  contents$.each( (k, el) => $(el).hide());
+
+  const board$ = $('#board-1');
+  const drawBox$ = $('<div>');
+  drawBox$.addClass('js-draw').attr('id', 'draw-1');
+  board$.prepend(drawBox$);
+  const svg1 = SVG('draw-1').size(board$.outerWidth(), board$.outerHeight());
+
+  $(document).on('click', '.js-module', function(event) {
+    const el$ = $(event.currentTarget);
+    const contentTarget = el$.data('content');
+    const content$ = $(`#${ contentTarget}`);
+    
+    svg1.clear();
+    
+    $('.js-module').removeClass('--active');
+    contents$.hide();
+    content$.fadeIn(function() {
+    });
+    console.log(content$);
+      // 
+      let x1;
+      if (window.screen.outerWidth < 992) {
+        x1 = content$.offset().left + (( content$.outerWidth() / 2) * .3);
+      } else {
+        x1 = content$.offset().left + ( content$.outerWidth() / 2);
+      }
+      const x2 = el$.offset().left + (el$.outerWidth() / 2) - el$.outerWidth()*.6;
+      const y1 = content$.offset().top + content$.outerHeight();
+      const y2 = el$.offset().top + el$.outerHeight() * .2;
+      const line1 = svg1.line(x1, y1, x1, y1);
+      const circle1 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x1 - 6, y1 - 6);
+      line1
+        .animate(200)
+        .plot(x1, y1, x1, y2)
+        .after(function() {
+          const line2 = svg1.line(x1, y2, x1, y2);
+          line2.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
+          line2
+            .animate(200)
+            .plot(x1, y2, x2, y2)
+            .after(function() {
+              const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x2, y2 - 6 );
+            });
+        })
+      line1.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
+      
+    
+    el$.addClass('--active');
+    
+  });
 }

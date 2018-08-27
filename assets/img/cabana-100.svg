@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3274 2083 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #884d01;
+      }
+
+      .cls-2 {
+        fill: #a66206;
+      }
+
+      .cls-3 {
+        fill: #fcad1c;
+      }
+
+      .cls-4 {
+        fill: #fed322;
+      }
+
+      .cls-5 {
+        fill: #fce61c;
+      }
+
+      .cls-6 {
+        fill: #734404;
+      }
+
+      .cls-7 {
+        fill: #ea5153;
+        fill-rule: evenodd;
+      }
+
+      .cls-8 {
+        fill: #221f33;
+      }
+    </style>
+  </defs>
+  <g id="barraca-completa" transform="translate(-383 536)">
+    <g id="barraca-ativa">
+      <g id="Group_433" data-name="Group 433" transform="translate(3657 1547)">
+        <g id="Group_432" data-name="Group 432" transform="translate(0 66.406)">
+          <path id="Path_885" data-name="Path 885" class="cls-1" d="M230.21,463.629h0a.307.307,0,0,0-.18-.252.965.965,0,0,0-.873,0,.307.307,0,0,0-.18.252h0v4.756h0a.306.306,0,0,0,.18.252.969.969,0,0,0,.873,0,.305.305,0,0,0,.18-.253h0v-4.755Z" transform="translate(-228.977 -463.272)"/>
+          <path id="Path_886" data-name="Path 886" class="cls-2" d="M229.157,463.881a.267.267,0,0,1,0-.506.964.964,0,0,1,.873,0,.267.267,0,0,1,0,.506A.967.967,0,0,1,229.157,463.881Z" transform="translate(-228.977 -463.271)"/>
+        </g>
+        <g id="Group_429" data-name="Group 429" transform="translate(0.009 0)">
+          <path id="Path_880" data-name="Path 880" class="cls-3" d="M130.422,52l51.641-31.668,22.214,65.347-48.691,33.933Z" transform="translate(-104.974 -20.328)"/>
+          <path id="Path_881" data-name="Path 881" class="cls-4" d="M25.5,182.437l25.162,67.621L.047,222.51Z" transform="translate(-0.047 -150.775)"/>
+          <path id="Path_870" data-name="Path 870" class="cls-5" d="M125.422,36.777l19.567-12,24.77,64.94-18.824,13.117Z" transform="translate(-83.81 -15.024)"/>
+        </g>
+        <path id="Path_883" data-name="Path 883" class="cls-6" d="M103.956,295.9,97.141,339.86l13.98,7.611Z" transform="translate(-78.683 -258.082)"/>
+        <path id="Path_884" data-name="Path 884" class="cls-3" d="M92.713,295.9S85.889,327.1,79.065,330.315l6.838,9.551Z" transform="translate(-67.44 -258.082)"/>
+        <g id="Group_430" data-name="Group 430" transform="translate(50.16 94.531)">
+          <path id="Path_885-2" data-name="Path 885" class="cls-1" d="M230.21,463.629h0a.307.307,0,0,0-.18-.252.965.965,0,0,0-.873,0,.307.307,0,0,0-.18.252h0v4.756h0a.306.306,0,0,0,.18.252.969.969,0,0,0,.873,0,.305.305,0,0,0,.18-.253h0v-4.755Z" transform="translate(-228.977 -463.272)"/>
+          <path id="Path_886-2" data-name="Path 886" class="cls-2" d="M229.157,463.881a.267.267,0,0,1,0-.506.964.964,0,0,1,.873,0,.267.267,0,0,1,0,.506A.967.967,0,0,1,229.157,463.881Z" transform="translate(-228.977 -463.271)"/>
+        </g>
+        <g id="Group_431" data-name="Group 431" transform="translate(98.767 60.937)">
+          <path id="Path_885-3" data-name="Path 885" class="cls-1" d="M230.21,463.629h0a.307.307,0,0,0-.18-.252.965.965,0,0,0-.873,0,.307.307,0,0,0-.18.252h0v4.756h0a.306.306,0,0,0,.18.252.969.969,0,0,0,.873,0,.305.305,0,0,0,.18-.253h0v-4.755Z" transform="translate(-228.977 -463.272)"/>
+          <path id="Path_886-3" data-name="Path 886" class="cls-2" d="M229.157,463.881a.267.267,0,0,1,0-.506.964.964,0,0,1,.873,0,.267.267,0,0,1,0,.506A.967.967,0,0,1,229.157,463.881Z" transform="translate(-228.977 -463.271)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_434" data-name="Group 434" transform="translate(3661.563 1547)">
+      <path id="Path_876" data-name="Path 876" class="cls-7" d="M0,4.016s8.106-4.333,16.483-4C20.765.19,22.411,4.848,27.4,5.494c2.439.317,6.1-.4,8.543-.2,8.156.676,7.672,5.669,17.647,6.478,3.1.2,10.145-1.945,12.612-3.841,0,0-3.153,8.7-10.813,11.868-4.544,1.879-9.452-.367-15.132,1.319-6.143,1.822-9.331,8.517-15.133,10.55-3.981,1.394-7.195-.361-10.813,0a21.046,21.046,0,0,0-9.418,3.2Z" transform="translate(5.455 0) rotate(9)"/>
+      <rect id="Rectangle_946" data-name="Rectangle 946" class="cls-8" width="1.953" height="80.664" rx="0.977" transform="translate(3.901 1.094)"/>
+    </g>
+  </g>
+</svg>

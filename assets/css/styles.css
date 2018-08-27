@@ -4,6 +4,7 @@
 
 html {
   font-family: 'Nunito', sans-serif;
+  --color-border: #331f0a;
 }
 
 .logo {
@@ -27,7 +28,7 @@ html {
 
 .btn-game {
   background-color: gray;
-  border: 2px solid #331f0a;
+  border: 2px solid var(--color-border);
   border-radius: 21px;
   color: #fff;
   cursor: pointer;
@@ -189,7 +190,10 @@ html {
 .section__content {
   display: flex;
   flex-flow: column;
+  flex: 1 1 auto;
+  height: 100%;
   padding: 1rem;
+  width: 100%;
 }
 
 .section--main {
@@ -202,16 +206,136 @@ html {
 
 .section--main .section__content {
   flex: 1 1 auto;
+  height: auto;
   padding-top: 60px;
   justify-content: space-between;
+  width: auto;
 }
 
 .section--mountain {
   background: #5fc1ff url("../img/bg-montanha.jpg") no-repeat 50% 50%/cover;
 }
+.section--mountain .section__content {
+  padding: 0;
+}
 .section--space {
   background: #243378 url("../img/bg-espaco.jpg") no-repeat 56% 50%/cover;
 }
+
+.board {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.board__place {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.board__image {
+  position: relative;
+  width: 100%;
+  /* z-index: 0; */
+}
+
+.board__module {
+  --diff: 0.02%;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  height: calc(20% - var(--diff));
+  width: calc(14% - var(--diff));
+  /* z-index: 2; */
+}
+.board__module:hover {
+  cursor: pointer;
+}
+
+.board__module--mountain {
+  background: transparent url("../img/cabana-0.svg") no-repeat 50% 0/80%;
+}
+.board__module--m1 {
+  right: calc(57% + var(--diff)/2);
+  bottom: calc(1% + var(--diff)/2);
+}
+.board__module--m2 {
+  right: calc(40% + var(--diff)/2);
+  bottom: calc(15% + var(--diff)/2);
+}
+.board__module--m3 {
+  right: calc(24% + var(--diff)/2);
+  bottom: calc(34% + var(--diff)/2);
+}
+.board__module--m4 {
+  right: calc(11% + var(--diff)/2);
+  bottom: calc(51.5% + var(--diff)/2);
+}
+.board__module--mountain.--active {
+  background: transparent url("../img/cabana-100.svg") no-repeat 50% 0/80%;
+}
+
+.info-box {
+  background-color: #d9bea3;
+  border: 4px solid var(--color-border);
+  border-radius: 21px;
+  bottom: 50%;
+  font-family: 'Raleway';
+  left: 1rem;
+  max-width: 290px;
+  position: absolute;
+  transform: translate(0, 50%);
+  width: calc(100% - 71px);
+  z-index: 1;
+}
+.info-box::before {
+  background-color: #fff2e5;
+  border-radius: 21px;
+  content: '';
+  height: calc(100% - 4px);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+.info-box--mountain-1 ,
+.info-box--mountain-2 {
+  transform: translate(0, -50%);
+  top: 50%;
+}
+.info-box__content {
+  color: #666;
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+  font-size: 14px;
+  line-height: 1.4rem;
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.info-box__title {
+  color: #663d14;
+  flex: 1 1 auto;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.js-draw {
+  position: relative;
+  z-index: 1;
+}
+
 
 .mv--enter-from-bottom {
   animation: enterFromBottom var(--animation-time) cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -281,6 +405,16 @@ html {
   width: 100%;
 }
 
+@media (min-width: 768px) {
+  .board__module {
+    --diff: 2%;
+  }
+
+  .info-box {
+    width: 320px;
+  }
+}
+
 @media (min-width: 992px) {
 
   .status-bar { 
@@ -309,11 +443,53 @@ html {
     max-width: 768px;
     text-align: center;
   }
+  .section__content {
+    padding: 0;
+  }
   .section--main .section__content {
     flex: 0 1 auto;
   }
   .section--space {
     background-position: 56% 50%;
+  }
+  .board--mountain {
+    background: transparent url("../img/board-montanha.png") no-repeat 100% 100%/100%;
+  }
+
+  .board__module {
+    --diff: 4.5%;
+  }
+  .info-box {
+    bottom: auto;
+    left: 67px;
+    /* top: 0; */
+    width: 420px;
+  }
+  /* .info-box--mountain-1 {
+    left: 67px;
+  }
+  .info-box--mountain-2 {
+    left: 270px;
+  }
+  .info-box--mountain-3 {
+    bottom: 62%;
+    left: 430px;
+  }
+  .info-box--mountain-4 {
+    bottom: 78%;
+    left: 450px;
+  } */
+}
+
+@media (min-width: 1200px) {
+  .board__module {
+    --diff: 5.5%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .board__module {
+    --diff: 6.5%;
   }
 }
 
