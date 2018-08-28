@@ -69,6 +69,7 @@ var Moving = function() {
     el$.css('z-index', sectionsCount - k);
   });
 
+
   return {
     getIndex: function() {
       return activeIndex;
@@ -127,56 +128,30 @@ var Moving = function() {
 }
 
 var BoardTips = function() {
-  const contents$ = $('.js-content');
+  const contents$ = $('.js-content'); 
+  let timer = null;
   contents$.each( (k, el) => $(el).hide());
-
-  const board$ = $('#board-1');
-  const drawBox$ = $('<div>');
-  drawBox$.addClass('js-draw').attr('id', 'draw-1');
-  board$.prepend(drawBox$);
-  const svg1 = SVG('draw-1').size(board$.outerWidth(), board$.outerHeight());
-
-  $(document).on('click', '.js-module', function(event) {
+  contents$.eq(0).show();
+  $('.js-module').eq(0).addClass('--active')
+  $(document).on('click', '.js-show-content', function(event) {
     const el$ = $(event.currentTarget);
     const contentTarget = el$.data('content');
+    const direction = el$.data('direction');
     const content$ = $(`#${ contentTarget}`);
-    
-    svg1.clear();
-    
     $('.js-module').removeClass('--active');
-    contents$.hide();
-    content$.fadeIn(function() {
-    });
-    console.log(content$);
-      // 
-      let x1;
-      if (window.screen.outerWidth < 992) {
-        x1 = content$.offset().left + (( content$.outerWidth() / 2) * .3);
-      } else {
-        x1 = content$.offset().left + ( content$.outerWidth() / 2);
-      }
-      const x2 = el$.offset().left + (el$.outerWidth() / 2) - el$.outerWidth()*.6;
-      const y1 = content$.offset().top + content$.outerHeight();
-      const y2 = el$.offset().top + el$.outerHeight() * .2;
-      const line1 = svg1.line(x1, y1, x1, y1);
-      const circle1 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x1 - 6, y1 - 6);
-      line1
-        .animate(200)
-        .plot(x1, y1, x1, y2)
-        .after(function() {
-          const line2 = svg1.line(x1, y2, x1, y2);
-          line2.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
-          line2
-            .animate(200)
-            .plot(x1, y2, x2, y2)
-            .after(function() {
-              const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x2, y2 - 6 );
-            });
-        })
-      line1.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
-      
-    
-    el$.addClass('--active');
-    
+    $(`.js-module[data-content="${ contentTarget }"]`).addClass('--active');
+
+    // if (!direction) {
+      contents$.hide();
+      content$.fadeIn();
+    //   return;
+    // // }
+    // // contents$.removeClass('info-box--out-to-left info-box--out-to-right');
+    // contents$.addClass( direction === 'left' ? 'info-box--out-to-left' : 'info-box--out-to-right');
+    // timer = clearTimeout(timer);
+    // timer = setTimeout(function() {
+    //   // contents$.hide();
+    //   content$.fadeIn();
+    // },200);
   });
 }
