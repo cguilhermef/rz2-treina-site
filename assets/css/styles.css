@@ -494,6 +494,7 @@ html {
   }
   .info-box[class*="space"] {
     bottom: 20%;
+    top: auto;
   }
 }
 
