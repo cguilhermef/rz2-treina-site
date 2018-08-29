@@ -183,8 +183,12 @@ html {
   justify-content: space-between;
   height: 100%;
   position: fixed;
+  transform: translate(0, -100%);
   top: 0;
   width: 100%;
+}
+.section--main {
+  transform: translate(0, 0);
 }
 
 .section__content {
@@ -193,6 +197,7 @@ html {
   flex: 1 1 auto;
   height: 100%;
   padding: 1rem;
+  position: relative;
   width: 100%;
 }
 
@@ -212,10 +217,15 @@ html {
   width: auto;
 }
 
+.section.--active {
+  z-index: 6;
+}
+
 .section--mountain {
   background: #5fc1ff url("../img/bg-montanha.jpg") no-repeat 50% 50%/cover;
 }
-.section--mountain .section__content {
+.section--mountain .section__content,
+.section--space .section__content {
   padding: 0;
 }
 .section--space {
@@ -261,6 +271,9 @@ html {
 .board__module--mountain {
   background: transparent url("../img/cabana-0.svg") no-repeat 50% 0/80%;
 }
+.board__module--space {
+  background: transparent url("../img/planeta-0.svg") no-repeat 50% 0/80%;
+}
 .board__module--m1 {
   right: calc(57% + var(--diff)/2);
   bottom: calc(1% + var(--diff)/2);
@@ -274,11 +287,30 @@ html {
   bottom: calc(34% + var(--diff)/2);
 }
 .board__module--m4 {
-  right: calc(11% + var(--diff)/2);
-  bottom: calc(51.5% + var(--diff)/2);
+  right: calc(8% + var(--diff)/2);
+  bottom: calc(57.5% + var(--diff)/2);
+}
+.board__module--s1 {
+  right: calc(74% + var(--diff)/2);
+  bottom: calc(44% + var(--diff)/2);
+}
+.board__module--s2 {
+  right: calc(60% + var(--diff)/2);
+  bottom: calc(27% + var(--diff)/2);
+}
+.board__module--s3 {
+  right: calc(43% + var(--diff)/2);
+  bottom: calc(36% + var(--diff)/2);
+}
+.board__module--s4 {
+  right: calc(21% + var(--diff)/2);
+  bottom: calc(19% + var(--diff)/2);
 }
 .board__module--mountain.--active {
   background: transparent url("../img/cabana-100.svg") no-repeat 50% 0/80%;
+}
+.board__module--space.--active {
+  background: transparent url("../img/planeta-100.svg") no-repeat 50% 0/80%;
 }
 
 .info-box {
@@ -457,23 +489,12 @@ html {
   .info-box {
     bottom: auto;
     left: 67px;
-    /* top: 0; */
+    top: 11.5%;
     width: 420px;
   }
-  /* .info-box--mountain-1 {
-    left: 67px;
+  .info-box[class*="space"] {
+    bottom: 20%;
   }
-  .info-box--mountain-2 {
-    left: 270px;
-  }
-  .info-box--mountain-3 {
-    bottom: 62%;
-    left: 430px;
-  }
-  .info-box--mountain-4 {
-    bottom: 78%;
-    left: 450px;
-  } */
 }
 
 @media (min-width: 1200px) {
@@ -487,7 +508,11 @@ html {
     --diff: 6.5%;
   }
 }
-
+@media (min-width: 1600px) {
+  .board__module {
+      --diff: 8.5%;
+  }
+}
 @keyframes exitToTop {
   0% {
     transform: translate(0, 0);
