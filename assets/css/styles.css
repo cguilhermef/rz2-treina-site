@@ -290,22 +290,32 @@ html {
   right: calc(8% + var(--diff)/2);
   bottom: calc(57.5% + var(--diff)/2);
 }
+
 .board__module--s1 {
-  right: calc(74% + var(--diff)/2);
-  bottom: calc(44% + var(--diff)/2);
+  right: calc(77% + var(--diff)/2);
+  bottom: calc(50% + var(--diff)/2);
 }
 .board__module--s2 {
-  right: calc(60% + var(--diff)/2);
-  bottom: calc(27% + var(--diff)/2);
+  right: calc(70% + var(--diff)/2);
+  bottom: calc(37% + var(--diff)/2);
 }
 .board__module--s3 {
-  right: calc(43% + var(--diff)/2);
-  bottom: calc(36% + var(--diff)/2);
+  right: calc(59% + var(--diff)/2);
+  bottom: calc(40% + var(--diff)/2);
 }
 .board__module--s4 {
-  right: calc(21% + var(--diff)/2);
-  bottom: calc(19% + var(--diff)/2);
+  right: calc(49% + var(--diff)/2);
+  bottom: calc(26% + var(--diff)/2);
 }
+.board__module--s5 {
+  right: calc(34% + var(--diff)/2);
+  bottom: calc(31% + var(--diff)/2);
+}
+.board__module--s6 {
+  right: calc(22% + var(--diff)/2);
+  bottom: calc(16% + var(--diff)/2);
+}
+
 .board__module--mountain.--active {
   background: transparent url("../img/cabana-100.svg") no-repeat 50% 0/80%;
 }

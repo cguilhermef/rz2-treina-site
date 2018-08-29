@@ -129,10 +129,10 @@ var Moving = function() {
 }
 
 var BoardTips = function(boardId) {
-  const contents$ = $('.js-content');
+  const board$ = $(`#${boardId}`);
+  const contents$ = board$.find('.js-content');
   contents$.each( (k, el) => $(el).hide());
 
-  const board$ = $(`#${boardId}`);
   const drawBox$ = $('<div>');
   drawBox$.addClass('js-draw').attr('id', `js-draw-${ boardId }`);
   board$.prepend(drawBox$);
@@ -149,7 +149,7 @@ var BoardTips = function(boardId) {
     
     svg1.clear();
     
-    $('.js-module').removeClass('--active');
+    board$.find('.js-module').removeClass('--active');
     contents$.hide();
     content$.fadeIn();
       // 
