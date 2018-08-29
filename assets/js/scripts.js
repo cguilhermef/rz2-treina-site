@@ -137,8 +137,12 @@ var BoardTips = function(boardId) {
   drawBox$.addClass('js-draw').attr('id', `js-draw-${ boardId }`);
   board$.prepend(drawBox$);
   const svg1 = SVG(`js-draw-${ boardId }`).size(board$.outerWidth(), board$.outerHeight());
-
+  let running = false;
   board$.on('click', '.js-module', function(event) {
+    if (running) {
+      return;
+    }
+    running = true;
     const el$ = $(event.currentTarget);
     const contentTarget = el$.data('content');
     const content$ = $(`#${ contentTarget}`);
@@ -158,7 +162,6 @@ var BoardTips = function(boardId) {
     let x2 = el$.offset().left + (el$.outerWidth() / 2) - 6;// - el$.outerWidth()*.6;
     let y1 = content$.offset().top + content$.outerHeight();
     let y2 = el$.offset().top - 6; // + el$.outerHeight() * .2;
-    console.log(y1, y2, el$.outerHeight());
     if ( y2 < y1 ) {
       y1 = content$.offset().top - 6;
     }
@@ -175,6 +178,7 @@ var BoardTips = function(boardId) {
           .plot(x1, y2, x2, y2)
           .after(function() {
             const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x2, y2 - 6 );
+            running = false;
           });
       })
     line1.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
