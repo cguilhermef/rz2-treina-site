@@ -19,6 +19,10 @@ html {
   width: 200px;
 }
 
+.logo--alter {
+  background-image: url("../img/treina-facil.svg");
+}
+
 .intro {
   font-weight: 300;
   font-size: 1.5rem;
@@ -201,6 +205,11 @@ html {
   width: 100%;
 }
 
+.section__col {
+  display: flex;
+  width: 100%;
+}
+
 .section--main {
   align-items: center;
   background-color: #ff9500;
@@ -230,6 +239,10 @@ html {
 }
 .section--space {
   background: #243378 url("../img/bg-espaco.jpg") no-repeat 56% 50%/cover;
+}
+
+.section--contact {
+  background-color: #162640;
 }
 
 .board {
