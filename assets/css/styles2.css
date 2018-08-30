@@ -1,0 +1,208 @@
+html {
+  --bg-light-base: #d9bea3;
+  --bg-light-fill: #fff2e5;
+  --color-border: #331f0a;
+  display: flex;
+  flex-flow: column;
+  font-family: 'Nunito', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #ff9500;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.menu-bar {
+  background-color: var(--bg-light-base);
+  border: 4px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 21px 21px;
+  display: flex;
+  flex-flow: column;
+  flex: 0 1 auto;
+  margin: 0 auto;
+  padding-bottom: 4px;
+  transition: all 1s;
+  width: calc(100% - 2rem);
+}
+
+.menu-bar__links {
+  display: none;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 1rem 1rem 0;
+  width: 100%;
+}
+
+.menu-bar__links--active {
+  display: flex;
+}
+
+.menu-bar__link {
+  color: #331f0a;
+  text-decoration: none;
+}
+
+.menu-bar__content {
+  align-items: center;
+  background-color: var(--bg-light-fill);
+  border-radius: 0 0 21px 21px;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  height: 100%;
+  padding-bottom: calc(1rem - 4px);
+}
+
+.logo {
+  align-self: center;
+  background: transparent url("../img/treinafacil.svg") no-repeat 50% 50%/100%;
+  display: flex;
+  height: 30px;
+  overflow: hidden;
+  outline: none;
+  margin: .5rem auto;
+  padding: 0;
+  text-indent: -5000px;
+  width: 57%;
+}
+
+.logo--dark {
+  background-image: url("../img/treina-3.svg");
+}
+
+/** Barra de progresso **/
+.status-bar {
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  height: 23px;
+  justify-self: flex-start;
+  max-width: calc(100% - 73px);
+  margin-left: 16px;
+  padding-left: 16px;
+  position: relative;
+  width: 450px;
+  z-index: 10;
+}
+.status-bar__arrow {
+  height: 23px;;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+.status-bar__progress-bar {
+  background-color: #294766;
+  border-radius: 6px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.status-bar__progress::before {
+  border: 2px solid #0a1f33;
+  border-radius: 6px;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.status-bar__progress-bar-count {
+  background-color: #21d3ff;
+  border-radius: 6px 0 0 6px;
+  box-shadow: 1px -1px 0 2px #178fe6 inset, 0 3px 0 0px #99eeff inset;
+  height: 100%;
+  transition: width 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.status-bar__count {
+  align-items: center;
+  border: 2px solid #143d66;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #143d66;
+  display: inline-flex;
+  font-size: 18px;
+  font-weight: 700;
+  height: 29px;
+  justify-content: center;
+  margin-left: 10px;
+  position: relative;
+  width: 76px;
+}
+.status-bar__count::before {
+  background-color: #fff;
+  border-left: 2px solid #143d66;
+  border-radius: 4px 0 0 0;
+  border-top: 2px solid #143d66;
+  content: '';
+  height: 9px;
+  left: -6px;
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 7px;
+  width: 9px;
+  z-index: 1;
+}
+/** end Barra de progresso **/
+
+.btn-menu,
+.btn-close-menu {
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  height: 40px;
+  margin-left: auto;
+  justify-content: center;
+  outline: none;
+  overflow: hidden;
+  text-indent: -5000px;
+  width: 40px;
+}
+.btn-menu {
+  margin-right: 8px;
+}
+.btn-menu::after {
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 3px,
+    var(--color-border) 3px,
+    var(--color-border)  6px
+  );
+  display: block;
+  content: "";
+  height: 18px;
+  width: 18px;
+}
+
+.btn-close-menu::after,
+.btn-close-menu::before {
+  background-color: #fff;
+  content: "";
+  display: flex;
+  flex: 0 1 auto;
+  height: 18px;
+  left: 18px;
+  position: absolute;
+  top: 10px;
+  width: 3px;
+}
+.btn-close-menu::after {
+  transform: rotate(45deg);
+}
+.btn-close-menu::before {
+  transform: rotate(-45deg);
+}

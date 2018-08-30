@@ -36,7 +36,8 @@ html {
   border-radius: 21px;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  flex: 0 0 auto;
   font-family: 'Raleway';
   font-weight: 700;
   line-height: 1;

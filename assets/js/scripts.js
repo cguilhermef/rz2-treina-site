@@ -185,7 +185,11 @@ var BoardTips = function(boardId) {
         y1 = content$.offset().top - 6;
       }
       let line1 = svg1.line(x1, y1, x1, y1);
-      const circle1 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x1 - 6, y1 - 6);
+      const circle1 = svg1.circle(12).fill('#fff').stroke({
+        color: '#ff9500', 
+        dashArray: [ 20,10,5,5,5,10 ],
+        width: 3
+      }).move(x1 - 6, y1 - 6);
       line1
         .animate(200)
         .plot(x1, y1, x1, y2)
@@ -196,7 +200,7 @@ var BoardTips = function(boardId) {
             .animate(200)
             .plot(x1, y2, x2, y2)
             .after(function() {
-              const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3}).move(x2, y2 - 6 );
+              const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3, dashArray: [ 20,10,5,5,5,10 ],}).move(x2, y2 - 6 );
               running = false;
             });
         })
