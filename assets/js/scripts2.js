@@ -7,10 +7,10 @@
     const body = document.getElementById('hm');
     const hammertime = new Hammer(body);
     hammertime.on('swipeup', function(ev) {
-      navigation.moveUp();
+      navigation.moveDown();
     });
     hammertime.on('swipedown', function(ev){
-      navigation.moveDown();
+      navigation.moveUp();
     });
   
     $(window).on('resize', function() {
@@ -28,6 +28,7 @@
     $(document).on('keydown', function(e) {
       switch(e.keyCode) {
         case 40: {
+          console.log('thi');
           navigation.moveDown();
           break;
         }
