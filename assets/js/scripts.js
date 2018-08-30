@@ -178,6 +178,9 @@ var BoardTips = function(boardId) {
       let x2 = el$.offset().left + (el$.outerWidth() / 2) - 6;// - el$.outerWidth()*.6;
       let y1 = content$.offset().top + content$.outerHeight();
       let y2 = el$.offset().top - 6; // + el$.outerHeight() * .2;
+      if (boardId === 'board-2') {
+        y2 += el$.outerHeight() * .8;
+      }
       if ( y2 < y1 ) {
         y1 = content$.offset().top - 6;
       }
