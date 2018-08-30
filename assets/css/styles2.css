@@ -2,6 +2,7 @@ html {
   --bg-light-base: #d9bea3;
   --bg-light-fill: #fff2e5;
   --color-border: #331f0a;
+  --color-border-light: #9c5f1e;
   display: flex;
   flex-flow: column;
   font-family: 'Nunito', sans-serif;
@@ -10,7 +11,6 @@ html {
 }
 
 body {
-  background-color: #ff9500;
   height: 100%;
   width: 100%;
 }
@@ -29,8 +29,12 @@ body {
   display: flex;
   flex-flow: column;
   flex: 0 1 auto;
+  left: 50%;
   margin: 0 auto;
   padding-bottom: 4px;
+  position: fixed;
+  top: 0;
+  transform: translate(-50%, 0);
   transition: all 1s;
   width: calc(100% - 2rem);
 }
@@ -166,6 +170,7 @@ body {
   height: 40px;
   margin-left: auto;
   justify-content: center;
+  position: relative;
   outline: none;
   overflow: hidden;
   text-indent: -5000px;
@@ -187,15 +192,24 @@ body {
   height: 18px;
   width: 18px;
 }
+.btn-menu--active::after {
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 3px,
+    var(--color-border-light) 3px,
+    var(--color-border-light)  6px
+  );
+}
 
 .btn-close-menu::after,
 .btn-close-menu::before {
-  background-color: #fff;
+  background-color: var(--color-border);
   content: "";
   display: flex;
   flex: 0 1 auto;
-  height: 18px;
-  left: 18px;
+  height: 20px;
+  left: 20px;
   position: absolute;
   top: 10px;
   width: 3px;
@@ -205,4 +219,19 @@ body {
 }
 .btn-close-menu::before {
   transform: rotate(-45deg);
+}
+
+.section {
+  background-color: #ff9500;
+}
+.section--mountain {
+  background-color: lightskyblue;
+}
+
+.section--space {
+  background-color: royalblue;
+}
+
+.section--contact {
+  background-color: #0a1f33;
 }
