@@ -37,6 +37,7 @@ body {
   transform: translate(-50%, 0);
   transition: all 1s;
   width: calc(100% - 2rem);
+  z-index: 1;
 }
 
 .menu-bar__links {
@@ -51,9 +52,12 @@ body {
   display: flex;
 }
 
-.menu-bar__link {
+a.menu-bar__link {
   color: #331f0a;
+  font-family: 'Raleway';
+  font-size: 12px;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .menu-bar__content {
@@ -138,7 +142,7 @@ body {
   background-color: #fff;
   color: #143d66;
   display: inline-flex;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   height: 29px;
   justify-content: center;
@@ -223,15 +227,243 @@ body {
 
 .section {
   background-color: #ff9500;
+  position: relative;
+  z-index: 0;
+}
+.section--intro .logo {
+  display: none;
 }
 .section--mountain {
-  background-color: lightskyblue;
+  background: #5fc1ff url("../img/bg-montanha.jpg") no-repeat 50% 50%/cover;
 }
-
 .section--space {
-  background-color: royalblue;
+  background: #243378 url("../img/bg-espaco.jpg") no-repeat 56% 50%/cover;
 }
-
 .section--contact {
   background-color: #0a1f33;
+}
+.section__content {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  height: 100%;
+  justify-content: space-between;
+  padding: 106px 1rem 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.intro {
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.5rem;
+  max-width: 90%;
+}
+
+.btn-game {
+  background-color: gray;
+  border: 2px solid var(--color-border);
+  border-radius: 21px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  font-family: 'Raleway';
+  font-weight: 700;
+  line-height: 1;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  min-width: 120px;
+}
+.btn-game::before {
+  background-color: darkgray;
+  border-radius: 21px;
+  content: '';
+  left: 1px;
+  height: calc(100% - 4px);
+  position: absolute;
+  top: 0;
+  transition: all .2s;
+  z-index: 0;
+  width: calc(100% - 2px);
+}
+.btn-game:hover::before {
+  background-color: #666;
+}
+.btn-game__text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-game--primary {
+  background-color: #da7f00;
+}
+.btn-game--primary::before {
+  background-color: #ff9500;
+}
+.btn-game--primary:hover:not([disabled])::before {
+  background-color: #e78700
+}
+
+.btn-game--contrast {
+  background-color: #ddd;
+  border: none;
+  color: #ff9500;
+  text-transform: none;
+}
+.btn-game--contrast::before {
+  background-color: #fff;
+}
+.btn-game--contrast:hover {
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, .15);
+}
+.btn-game--contrast:hover:not([disabled])::before {
+  background-color: #f0f0f0;
+}
+
+.board {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.board__place {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.board__image {
+  position: relative;
+  width: 100%;
+  /* z-index: 0; */
+}
+
+.board__module {
+  --diff: 0.02%;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  height: calc(20% - var(--diff));
+  width: calc(14% - var(--diff));
+  /* z-index: 2; */
+}
+.board__module:hover {
+  cursor: pointer;
+}
+
+.board__module--mountain {
+  background: transparent url("../img/cabana-0.svg") no-repeat 50% 0/80%;
+}
+.board__module--space {
+  background: transparent url("../img/planeta-0.svg") no-repeat 50% 0/80%;
+}
+.board__module--m1 {
+  right: calc(57% + var(--diff)/2);
+  bottom: calc(1% + var(--diff)/2);
+}
+.board__module--m2 {
+  right: calc(40% + var(--diff)/2);
+  bottom: calc(15% + var(--diff)/2);
+}
+.board__module--m3 {
+  right: calc(24% + var(--diff)/2);
+  bottom: calc(34% + var(--diff)/2);
+}
+.board__module--m4 {
+  right: calc(8% + var(--diff)/2);
+  bottom: calc(57.5% + var(--diff)/2);
+}
+
+.board__module--s1 {
+  right: calc(77% + var(--diff)/2);
+  bottom: calc(50% + var(--diff)/2);
+}
+.board__module--s2 {
+  right: calc(70% + var(--diff)/2);
+  bottom: calc(37% + var(--diff)/2);
+}
+.board__module--s3 {
+  right: calc(59% + var(--diff)/2);
+  bottom: calc(40% + var(--diff)/2);
+}
+.board__module--s4 {
+  right: calc(49% + var(--diff)/2);
+  bottom: calc(26% + var(--diff)/2);
+}
+.board__module--s5 {
+  right: calc(34% + var(--diff)/2);
+  bottom: calc(31% + var(--diff)/2);
+}
+.board__module--s6 {
+  right: calc(22% + var(--diff)/2);
+  bottom: calc(16% + var(--diff)/2);
+}
+
+.board__module--mountain.--active {
+  background: transparent url("../img/cabana-100.svg") no-repeat 50% 0/80%;
+}
+.board__module--space.--active {
+  background: transparent url("../img/planeta-100.svg") no-repeat 50% 0/80%;
+}
+
+.info-box {
+  background-color: #d9bea3;
+  border: 4px solid var(--color-border);
+  border-radius: 21px;
+  bottom: 60%;
+  font-family: 'Raleway';
+  left: 1rem;
+  max-width: 290px;
+  position: absolute;
+  transform: translate(0, 50%);
+  width: 100%;
+  z-index: 1;
+}
+.info-box::before {
+  background-color: #fff2e5;
+  border-radius: 21px;
+  content: '';
+  height: calc(100% - 4px);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+.info-box__content {
+  color: #666;
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+  font-size: 12px;
+  line-height: 1.4rem;
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.info-box__title {
+  color: #663d14;
+  flex: 1 1 auto;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  margin-top: 0;
+}
+.info-box__text {
+  margin-bottom: 0;
+}
+
+.js-draw {
+  position: relative;
+  z-index: 1;
 }
