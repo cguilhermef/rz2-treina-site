@@ -283,6 +283,10 @@ a.menu-bar__link {
   text-transform: uppercase;
   /* min-width: 120px; */
 }
+.btn-game:hover {
+  color: #fff;
+  text-decoration: none;
+}
 .btn-game::before {
   background-color: darkgray;
   border-radius: 21px;
@@ -310,7 +314,8 @@ a.menu-bar__link {
   background-color: #ff9500;
 }
 .btn-game--primary:hover:not([disabled])::before {
-  background-color: #e78700
+  background-color: #e78700;
+  color: #fff;
 }
 
 .btn-game--contrast {
@@ -324,6 +329,7 @@ a.menu-bar__link {
 }
 .btn-game--contrast:hover {
   box-shadow: 0 -2px 0 rgba(0, 0, 0, .15);
+  color: #ff9500;
 }
 .btn-game--contrast:hover:not([disabled])::before {
   background-color: #f0f0f0;
@@ -479,6 +485,10 @@ a.menu-bar__link {
   z-index: 1;
 }
 
+.form {
+  margin-top: 1rem;
+}
+
 .form-control-label {
   color: #fff;
   display: none;
@@ -490,8 +500,89 @@ a.menu-bar__link {
   margin-bottom: .5rem;
 }
 
+.form-control.error {
+  border-color: #ff7e7e;
+  box-shadow: 0 0 1px 1px rgba(244, 126, 126) inset;
+}
+
 .form-group .error {
-  color: rgb(255, 126, 126);
+  color: #ff7e7e;
   font-size: 10px;
   margin-bottom: 0;
+}
+
+@media(min-width: 576px) {
+  .logo {
+    width: 227px;
+    height: 44px;
+  }
+  .info-box {
+    bottom: 57%;
+  }
+  .info-box--mountain-2 {
+    left: 18%;
+  }
+  .info-box--mountain-3 {
+    left: 26%;
+  }
+  .info-box--mountain-4 {
+    left: 38%;
+  }
+  .info-box--space-2 {
+    bottom: 60%;
+    left: 18%;
+  }
+  .info-box--space-3 {
+    bottom: 55%;
+    left: 22%;
+  }
+  .info-box--space-4 {
+    bottom: 62%;
+    left: 28%;
+  }
+  .info-box--space-5 {
+    bottom: 58%;
+    left: 34%;
+  }
+  .info-box--space-6 {
+    bottom: 60%;
+    left: 40%;
+  }
+  .section--intro .section__content {
+    justify-content: space-around;
+    text-align: center;
+  }
+  .section--intro .intro {
+    max-width: 100%;
+  }
+  .form {
+    margin-top: 120px;
+  }
+  .form-control-label {
+    display: block;
+  }
+  .board__module--s1 {
+    right: calc(73% + var(--diff)/2);
+    bottom: calc(89% + var(--diff)/2);
+  }
+  .board__module--s2 {
+    right: calc(64% + var(--diff)/2);
+    bottom: calc(67% + var(--diff)/2);
+  }
+  /* .board__module--s3 {
+    right: calc(59% + var(--diff)/2);
+    bottom: calc(40% + var(--diff)/2);
+  }
+  .board__module--s4 {
+    right: calc(49% + var(--diff)/2);
+    bottom: calc(26% + var(--diff)/2);
+  }
+  .board__module--s5 {
+    right: calc(34% + var(--diff)/2);
+    bottom: calc(31% + var(--diff)/2);
+  }
+  .board__module--s6 {
+    right: calc(22% + var(--diff)/2);
+    bottom: calc(16% + var(--diff)/2);
+  } */
 }

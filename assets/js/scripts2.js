@@ -36,12 +36,6 @@
     const mountainBoxes = new InfoBoxControl().init(board1, boxInfoControl1, moduleTrigger1);
     const spaceBoxes = new InfoBoxControl().init(board2, boxInfoControl2, moduleTrigger2);
     let timer = null;
-
-    $(window).on('resize', function() {
-      sectionsHeight
-        .updateWindowHeigh()
-        .resizeSections();
-    });
   
     $(document).on('click', '.js-toggle-menu', function(e) {
       e.preventDefault();
