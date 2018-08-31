@@ -4,9 +4,14 @@
 
     const sectionsHeight = SectionHeight().init();
     const navigation = Navigation();
-    const board1 = ConnectElements().init($('#board-1'));
-    const boxInfoControl = BoxInfoControl();
-    const moduleTrigger = ModuleTrigger();
+    const board1 = ConnectElements().init($('#board-1')); 
+    const board2 = ConnectElements().init($('#board-2'));
+    const boxInfoControl1 = new BoxInfoControl().init('board-1');
+    const boxInfoControl2 = new BoxInfoControl().init('board-2');
+    const moduleTrigger1 =  new ModuleTrigger().init('board-1');
+    const moduleTrigger2 = new ModuleTrigger().init('board-2');
+    const mountainBoxes = new InfoBoxControl().init(board1, boxInfoControl1, moduleTrigger1);
+    const spaceBoxes = new InfoBoxControl().init(board2, boxInfoControl2, moduleTrigger2);
     let timer = null;
 
     $(window).on('resize', function() {
@@ -24,7 +29,6 @@
     $(document).on('keydown', function(e) {
       switch(e.keyCode) {
         case 40: {
-          console.log('thi');
           navigation.moveDown();
           break;
         }
@@ -41,20 +45,31 @@
         return;
       }
       navigation.active(target);
+      if (target === 1) {
+        timer = clearTimeout(timer);
+        timer = setTimeout(function() {
+          mountainBoxes.activate('content-1');
+        }, 800);
+        return;
+      }
+      if (target === 2) {
+        timer = clearTimeout(timer);
+        timer = setTimeout(function() {
+          spaceBoxes.activate('content-5');
+        }, 800);
+      }
     });
 
     $('.info-box').hide();
-    // const board1 = BoardTips('board-1').init();
-    // const board2 = BoardTips('board-2').init();
-    $(document).on('click', '.js-module', function(event) {
-      const target$ = $(event.currentTarget);
-      const box$ = boxInfoControl.active(target$.data('content'));
-      moduleTrigger.active(target$);
-      board1.draw(box$, target$); 
+    $(document).on('click', '#board-1 .js-module, #board-1 .js-trigger-module', function(event) {
+      mountainBoxes.activate($(event.currentTarget).data().content);
+    });
+    $(document).on('click', '#board-2 .js-module, #board-2 .js-trigger-module', function(event) {
+      spaceBoxes.activate($(event.currentTarget).data().content);
     });
   });
 
-  var Progress = function() {
+  const Progress = function() {
     const bar = $('.js-bar');
     const count = $('.js-count');
     let timer = null;
@@ -127,7 +142,6 @@
         this.active(sectionActive);
       },
       active: function(section) {
-        console.log(section, sectionActive);
         if (Number(section) === Number(sectionActive)) {
           return;
         }
@@ -142,36 +156,91 @@
     }
   };
 
-  var ModuleTrigger = function() {
-    const modules$ = $('.js-module');
+  const ModuleTrigger = function() {
     return {
-      active: function(module$) {
+      getModuleByDataContent: function(contentId) {
+        const self = this;
+        let el$;
+        self.modules$.each((k, el) => {
+          if ($(el).data().content === contentId) {
+            el$ = $(el);
+          }
+        });
+        return el$;
+      },
+      activate: function(contentId) {
+        const module$ = this.getModuleByDataContent(contentId);
+        if (!module$) {
+          return;
+        }
         if (module$.data('activated')) {
           return;
         }
-        modules$.each((k, el) => $(el).removeClass('--active'));
+        this.deactivateAll();
         module$.addClass('--active');
         return module$;
+      },
+      deactivateAll: function() {
+        this.modules$.each((k, el) => $(el).removeClass('--active'));
+      },
+      modules$: null,
+      init: function(boardId) {
+        this.modules$ = $(`#${ boardId } .js-module`);
+        return this;
       }
     }
   }
 
-  var BoxInfoControl = function() {
-    const boxInfoList$ = $('.js-content');
+  const BoxInfoControl = function() {
+    let boxInfoList$;
     return {
-      active: function(boxInfoId) {
-        const box$ = $(`#${boxInfoId}`);
+      deactivateAll: function() {
+        boxInfoList$.each((k, el) => $(el).hide());
+      },
+      activate: function(boxInfoId) {
+        const box$ = $(`#${ boxInfoId }`);
         if (box$.data('activated')) {
           return;
         }
-        boxInfoList$.each((k, el) => $(el).hide());
-        box$.show();
+        this.deactivateAll();
+        box$.fadeIn();
         return box$;
+      },
+      init: function(boardId) {
+        boxInfoList$ = $(`#${ boardId } .js-content`);
+        return this;
       }
     }
   };
 
-  var ConnectElements = function() {
+  const InfoBoxControl = function() {
+    return {
+      timer: null,
+      board: null,
+      boxControl: null,
+      moduleTrigger: null,
+      activate: function(contentId) {
+        const self = this;
+        const target$ = this.moduleTrigger.getModuleByDataContent(contentId);
+        this.moduleTrigger.deactivateAll();
+        this.boxControl.deactivateAll();
+        this.moduleTrigger.activate(contentId);
+        this.boxControl.activate(contentId);
+        this.timer = clearTimeout(this.timer);
+        this.tiemr = setTimeout(function() { 
+          self.board.draw($(`#${ contentId }`), target$); 
+        }, 20);
+      },
+      init: function(board, boxControl, moduleTrigger) {
+        this.board = board;
+        this.boxControl = boxControl;
+        this.moduleTrigger = moduleTrigger;
+        return this;
+      }
+    }
+  }
+
+  const ConnectElements = function() {
     return {
       board: null,
       boardDimension: {},
@@ -231,81 +300,5 @@
       }
     }
   }
-
-  var BoardTips = function(boardId) {
-    const board$ = $(`#${boardId}`);
-    const contents$ = board$.find('.js-content');
-    contents$.each( (k, el) => $(el).hide());
-  
-    const drawBox$ = $('<div>');
-    drawBox$.addClass('js-draw').attr('id', `js-draw-${ boardId }`);
-    board$.prepend(drawBox$);
-    const svg1 = SVG(`js-draw-${ boardId }`).size(board$.outerWidth(), board$.outerHeight());
-    let running = false;
-    return {
-      activeContent: function(contentId) {
-        if (running) {
-          return;
-        }
-        const el$ = board$.find(`.js-module[data-content="${ contentId }"]`);
-        if ( el$.hasClass('--active')) {
-          return;
-        }
-        running = true;
-        board$.find('.js-module').removeClass('--active'); 
-        
-        el$.addClass('--active');
-        const content$ = $(`#${ contentId}`);
-      
-        svg1.clear();
-        contents$.hide();
-        content$.fadeIn();
-        let x1;
-        if (window.screen.outerWidth < 992) {
-          x1 = content$.offset().left + (( content$.outerWidth() / 2) * .3);
-        } else {
-          x1 = content$.offset().left + ( content$.outerWidth() / 2);
-        }
-        let x2 = el$.offset().left + (el$.outerWidth() / 2) - 6;// - el$.outerWidth()*.6;
-        let y1 = content$.offset().top + content$.outerHeight() - 106;
-        let y2 = el$.offset().top - 6 - 106; // + el$.outerHeight() * .2;
-        if (boardId === 'board-2') {
-          y2 += el$.outerHeight() * .8;
-        }
-        if ( y2 < y1 ) {
-          y1 = content$.offset().top - 6;
-        }
-        let line1 = svg1.line(x1, y1, x1, y1);
-        const circle1 = svg1.circle(12).fill('#fff').stroke({
-          color: '#ff9500', 
-          dashArray: [ 20,10,5,5,5,10 ],
-          width: 3
-        }).move(x1 - 6, y1 - 6);
-        line1
-          .animate(200)
-          .plot(x1, y1, x1, y2)
-          .after(function() {
-            const line2 = svg1.line(x1, y2, x1, y2);
-            line2.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
-            line2
-              .animate(200)
-              .plot(x1, y2, x2, y2)
-              .after(function() {
-                const circle2 = svg1.circle(12).fill('#fff').stroke({color: '#ff9500', width: 3, dashArray: [ 20,10,5,5,5,10 ],}).move(x2, y2 - 6 );
-                running = false;
-              });
-          })
-        line1.stroke({ color: '#ff9500', width: 4, linecap: 'round'});
-      },
-      init: function() {
-        const self = this;
-        board$.on('click', '.js-module', function(event) {
-          self.activeContent($(event.currentTarget).data('content'));
-        });
-        return self;
-      }
-    }
-  }
-
 })();
 

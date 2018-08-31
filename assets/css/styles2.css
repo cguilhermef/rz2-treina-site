@@ -272,11 +272,12 @@ a.menu-bar__link {
   font-weight: 700;
   line-height: 1;
   justify-content: center;
-  padding: 12px;
+  /* padding: 12px; */
+  padding: 6px 6px 8px;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  min-width: 120px;
+  /* min-width: 120px; */
 }
 .btn-game::before {
   background-color: darkgray;
@@ -426,7 +427,7 @@ a.menu-bar__link {
   position: absolute;
   transform: translate(0, 50%);
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 .info-box::before {
   background-color: #fff2e5;
@@ -461,6 +462,12 @@ a.menu-bar__link {
 }
 .info-box__text {
   margin-bottom: 0;
+}
+.info-box__navigation {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .js-draw {
