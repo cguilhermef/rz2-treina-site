@@ -1,9 +1,32 @@
-(function() {
+// (function() {
 
   $(document).ready(function() {
 
-    const sectionsHeight = SectionHeight().init();
-    const navigation = Navigation();
+    FormContact();
+    FoneMask();
+  
+    new fullpage('#fullpage', {
+      autoScrolling:true,
+      scrollHorizontally: false,
+      licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+      anchors:['inicio', 'beneficios', 'funcionalidades', 'contato'],
+      onLeave: function(origin, destination, direction){
+        if (destination.anchor === 'beneficios') {
+          timer = setTimeout(function() {
+            mountainBoxes.activate('content-1');
+          }, 800);
+        } else {
+          mountainBoxes.deactivateAll();
+        }
+        if (destination.anchor === 'funcionalidades') {
+          timer = setTimeout(function() {
+            spaceBoxes.activate('content-5');
+          }, 800);
+        } else {
+          spaceBoxes.deactivateAll();
+        }
+      }
+    });
     const board1 = ConnectElements().init($('#board-1')); 
     const board2 = ConnectElements().init($('#board-2'));
     const boxInfoControl1 = new BoxInfoControl().init('board-1');
@@ -36,27 +59,6 @@
           navigation.moveUp();
           break;
         }
-      }
-    });
-
-    $(document).on('click', '.js-goto-section', function(e) {
-      const target = $(e.currentTarget).data('target');
-      if (!target && target !== 0) {
-        return;
-      }
-      navigation.active(target);
-      if (target === 1) {
-        timer = clearTimeout(timer);
-        timer = setTimeout(function() {
-          mountainBoxes.activate('content-1');
-        }, 800);
-        return;
-      }
-      if (target === 2) {
-        timer = clearTimeout(timer);
-        timer = setTimeout(function() {
-          spaceBoxes.activate('content-5');
-        }, 800);
       }
     });
 
@@ -106,7 +108,9 @@
       resizeSections: function() {
         const self = this;
         sections$.each(function(k, el) {
-          $(el).height(windowHeight);
+          $(el).css({ 
+            height: `${ windowHeight}px`
+          });
         });
         return self;
       },
@@ -195,7 +199,9 @@
     let boxInfoList$;
     return {
       deactivateAll: function() {
-        boxInfoList$.each((k, el) => $(el).hide());
+        boxInfoList$.each((k, el) => { 
+          $(el).hide().data('activated', false);
+        });
       },
       activate: function(boxInfoId) {
         const box$ = $(`#${ boxInfoId }`);
@@ -204,6 +210,7 @@
         }
         this.deactivateAll();
         box$.fadeIn();
+        box$.data('activated', true);
         return box$;
       },
       init: function(boardId) {
@@ -219,6 +226,11 @@
       board: null,
       boxControl: null,
       moduleTrigger: null,
+      deactivateAll: function() {
+        this.moduleTrigger.deactivateAll();
+        this.boxControl.deactivateAll();
+        this.board.board.clear();
+      },
       activate: function(contentId) {
         const self = this;
         const target$ = this.moduleTrigger.getModuleByDataContent(contentId);
@@ -295,10 +307,60 @@
           w: recipe$.outerWidth()
         };
         this.board = this.createBoard(recipe$);
-        console.log(this.board);
         return this;
       }
     }
   }
-})();
+  const FormContact = function() {
+    const frm$ = $('#frm-contact');
+    const modalSuccess$ = $('#demo-request-success');
+    const modalError$ = $('#demo-request-error');
+    const modalDemo$ = $('#demo');
+    const modalProcessing$ = $('#processing');
+    $.validator.messages.required = frm$.data('msg-required-field');
+    $.validator.messages.email = frm$.data('msg-invalid-email');
+    frm$.validate({
+      submitHandler: function(frm) {
+        const value = $(frm)
+          .serializeArray()
+          .reduce( function(result, field) {
+            result[field.name] = field.value;
+            return result;
+          }, {});
+        $.ajax({
+          url: '//checklistfacil.com/br',
+          method: 'post',
+          dataType: 'json',
+          data: value,
+          beforeSend: function() {
+            modalDemo$.modal('hide');
+            modalProcessing$.modal('show');
+          },
+          success: function() {
+            modalSuccess$.modal('show');
+          },
+          error: function() {
+            modalError$.modal('show');          
+          },
+          complete: function() {
+            modalProcessing$.modal('hide');
+            frm$.trigger('reset');
+          }
+        })
+      }
+    });
+  }
+  
+  const FoneMask = function() {
+    const custom = function (val) {
+      return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    options = {
+      onKeyPress: function(val, e, field, options) {
+          field.mask(custom.apply({}, arguments), options);
+        }
+    };
+    $('.js-mask-fone').mask(custom, options);
+  }
+// })();
 
