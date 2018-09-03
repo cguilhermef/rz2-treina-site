@@ -704,9 +704,6 @@ a.menu-bar__link {
   .board__module {
     --diff: 5.5%;
   }
-  /* .menu-bar__links {
-    margin: 0 auto;
-  } */
   a.menu-bar__link {
     font-size: 1rem;
   }
