@@ -85,7 +85,7 @@ a.menu-bar__link {
 }
 
 .logo--dark {
-  background-image: url("../img/treina-3.svg");
+  background-image: url("../img/treina-facil.svg");
 }
 
 /** Barra de progresso **/
@@ -589,6 +589,7 @@ a.menu-bar__link {
 
 @media (min-width: 768px) {
   .logo {
+    animation: logoEnter .5s ease-in-out;
     height: 32px;
     margin: 1rem;
     order: 1;
@@ -646,6 +647,7 @@ a.menu-bar__link {
 
 @media (min-width: 992px) {
   .logo {
+    display: none;
     order: 3;
   }
   .btn-game--contrast {
@@ -653,7 +655,13 @@ a.menu-bar__link {
     min-width: 220px;
   }
   .menu-bar__content {
-    padding-bottom: 0;
+    padding: 11px 0;
+  }
+  .--show-logo .logo {
+    display: flex;
+  }
+  .--show-logo .menu-bar__content {
+    padding: 0;
   }
   .menu-bar__links {
     order: 2;
@@ -733,5 +741,14 @@ a.menu-bar__link {
 @media (min-width: 1600px) {
   .board__module {
       --diff: 8.5%;
+  }
+}
+
+@keyframes logoEnter {
+  0% {
+    background-size: 0%;
+  }
+  100% {
+    background-size: 100%;
   }
 }

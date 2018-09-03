@@ -26,6 +26,11 @@ $(document).ready(function() {
       } else {
         spaceBoxes.deactivateAll();
       }
+      if (destination.anchor !== 'inicio' ) {
+        $('.wrapper').addClass('--show-logo');
+      } else {
+        $('.wrapper').removeClass('--show-logo');
+      }
       if ( direction === 'down' ) {
         progress.increment();
       } else {
