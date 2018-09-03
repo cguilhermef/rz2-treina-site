@@ -672,6 +672,33 @@ a.menu-bar__link {
   .menu-bar__links {
     margin: 0 auto;
   }
+  .info-box--space-1 {
+    bottom: 80%;
+  }
+  .info-box--space-2 {
+    bottom: 73%;
+  }
+  .info-box--space-3 {
+    bottom: 80%;
+    left: 42%;
+  }
+  .info-box--space-4 {
+    bottom: 42%;
+    left: 11%;
+  }
+  .info-box--space-5 {
+    bottom: 85%;
+  }
+  .info-box--space-6 {
+    left: 70%;
+    bottom: 73%;
+  } 
+  .board__module--s1 {
+    bottom: calc(63% + var(--diff)/2);
+  }
+  .board__module--s2 {
+    bottom: calc(51% + var(--diff)/2);
+  }
 }
 
 @media (min-width: 1440px) {
