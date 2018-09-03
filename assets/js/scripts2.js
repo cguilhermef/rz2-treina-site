@@ -5,6 +5,7 @@ $(document).ready(function() {
   FormContact();
   FoneMask();
   const progress = Progress();
+  LinkActivatedStyle('inicio');
 
   new fullpage('#fullpage', {
     autoScrolling:true,
@@ -35,7 +36,7 @@ $(document).ready(function() {
         $('.wrapper').addClass('--show-logo');
       } else {
         LinkActivatedStyle('inicio');
-        $('.wrapper').removeClass('--show-logo');
+        $('.wrapper').removeClass('--show-logo')
       }
       progress.set(origin.index, destination.index);
     }
