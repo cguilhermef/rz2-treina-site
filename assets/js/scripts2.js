@@ -295,10 +295,24 @@ const ConnectElements = function() {
       const fromElMetrics = this.metricsOf(fromEl);
       const toElMetrics = this.metricsOf(toEl);
 
-      const x1 = fromElMetrics.l + fromElMetrics.w * .5;
-      const y1 = fromElMetrics.t + fromElMetrics.h - 106 + 4;
-      const x2 = toElMetrics.l + toElMetrics.w * .5;
-      const y2 = toElMetrics.t - 106;
+      let x1 = fromElMetrics.l + fromElMetrics.w * .5;
+      let y1 = fromElMetrics.t + fromElMetrics.h - 106 + 4;
+      let x2 = toElMetrics.l + toElMetrics.w * .5;
+      let y2 = toElMetrics.t - 106;
+
+      if (y2 < y1) {
+        y1 -= fromElMetrics.h * .5;
+        if (x2 > x1) {
+          x1 += fromElMetrics.w * .5;
+          x2 -= toElMetrics.w * .5;
+          y2 += toElMetrics.h * .5;
+        }
+        if (x2 < x1) {
+          x1 -= fromElMetrics.w * .5 + 6;
+          x2 += toElMetrics.w * .5;
+          y2 += toElMetrics.h * .5;
+        }
+      }
 
       this.board
         .clear()

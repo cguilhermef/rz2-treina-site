@@ -625,6 +625,9 @@ a.menu-bar__link {
   .info-box {
     z-index: 3;
   }
+  .info-box--mountain-4 {
+    left: 30%;
+  }
   .info-box--space-1 {
     bottom: 67%;
     left: 40%;
