@@ -648,6 +648,10 @@ a.menu-bar__link {
   .logo {
     order: 3;
   }
+  .btn-game--contrast {
+    align-self: center;
+    min-width: 220px;
+  }
   .menu-bar__content {
     padding-bottom: 0;
   }
