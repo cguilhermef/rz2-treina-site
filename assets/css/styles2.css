@@ -243,18 +243,7 @@ a.menu-bar__link.--active {
 .section--space {
   background: #243378 url("../img/bg-espaco.jpg") no-repeat 56% 50%/cover;
 }
-.section--contact {
-  background-color: #0a1f33;
-}
-.section--contact .section__content {
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-/* .section--contact {
-  overflow: hidden;
-  overflow-y: scroll;
-} */
+
 .section__content {
   display: flex;
   flex-flow: column;
@@ -270,7 +259,26 @@ a.menu-bar__link.--active {
   color: #fff;
   font-weight: 300;
   font-size: 1.5rem;
+  margin: 0 auto;
+  text-align: center;
   max-width: 90%;
+}
+
+.section--contact {
+  background-color: #0a1f33;
+}
+.section--contact .section__content {
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.section--contact .section__content {
+  justify-content: flex-start;
+}
+.section--contact .intro {
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
 .btn-game {
@@ -328,20 +336,21 @@ a.menu-bar__link.--active {
 }
 
 .btn-game--contrast {
-  background-color: #ddd;
+  background-color: #2e8fe6;
   border: none;
-  color: #ff9500;
+  color: #fff;
   text-transform: none;
 }
 .btn-game--contrast::before {
-  background-color: #fff;
+  background-color: #48b4e0;
 }
 .btn-game--contrast:hover {
   box-shadow: 0 -2px 0 rgba(0, 0, 0, .15);
-  color: #ff9500;
+  color: #fff;
+  cursor: pointer;
 }
 .btn-game--contrast:hover:not([disabled])::before {
-  background-color: #f0f0f0;
+  background-color: #42a6ce;
 }
 
 .board {
@@ -524,8 +533,13 @@ a.menu-bar__link.--active {
   align-items: center;
   background-color: #000;
   color: #666;
-  display: none;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column-reverse;
+  font-size: 14px;
   justify-content: space-around;
+  margin-top: auto;
+  text-align: center;
   padding: .5rem 1rem;
 }
 
@@ -627,6 +641,9 @@ a.menu-bar__link.--active {
   .info-box {
     z-index: 3;
   }
+  .info-box--mountain-1 {
+    left: 27%;
+  }
   .info-box--mountain-4 {
     left: 30%;
   }
@@ -644,6 +661,19 @@ a.menu-bar__link.--active {
   .info-box--space-3 {
     left: 36%;
   }
+
+  .section--contact .section__content {
+    justify-content: space-between;
+  }
+  .section--contact .intro {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .footer {
+    flex-flow: row;
+    flex-direction: row;
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 992px) {
@@ -656,7 +686,8 @@ a.menu-bar__link.--active {
   }
   .btn-game--contrast {
     align-self: center;
-    min-width: 220px;
+    font-size: 24px;
+    min-width: 240px;
   }
   .menu-bar__content {
     overflow: hidden;
@@ -700,6 +731,9 @@ a.menu-bar__link.--active {
   .board__module {
     --diff: 4.5%;
   }
+  .form {
+    margin-top: 0;
+  }
   .footer {
     display: flex;
   }
@@ -726,8 +760,8 @@ a.menu-bar__link.--active {
     left: 42%;
   }
   .info-box--space-4 {
-    bottom: 42%;
-    left: 11%;
+    bottom: 73%;
+    left: 41%;
   }
   .info-box--space-5 {
     bottom: 85%;
@@ -761,5 +795,12 @@ a.menu-bar__link.--active {
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+@keyframes loadingOut {
+  100% {
+    display: none;
+    opacity: 0;
   }
 }

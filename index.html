@@ -10,10 +10,74 @@
     <link href="//fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.css">
-    <link rel="stylesheet" href="assets/css/styles2.css?v=1.0.0-beta.2.4">
+    <link rel="stylesheet" href="assets/css/styles2.css?v=1.0.0-beta.2.5">
     <title>Treinafácil</title>
+    <style>
+      .wrapper {
+        display: none;
+      }
+      .loading {
+        display: flex;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: #ff9500;
+        z-index: 100;
+      }
+      .spinner {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        width: 70px;
+      }
+
+      .spinner > div {
+        width: 18px;
+        height: 18px;
+        background-color: #fff;
+
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+
+      .spinner .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+
+      .spinner .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+      }
+
+      @-webkit-keyframes sk-bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0) }
+        40% { -webkit-transform: scale(1.0) }
+      }
+
+      @keyframes sk-bouncedelay {
+        0%, 80%, 100% { 
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        } 40% { 
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div class="loading">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
     <div class="wrapper">
       <div class="menu-bar">
         <div class="menu-bar__content">
@@ -40,7 +104,7 @@
           <div class="section__content">
             <div class="section__content">
               <h2 class="logo">Treinafácil</h2>
-              <p class="intro">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, quidem asperiores. In, iusto.</p>
+              <p class="intro">Garanta mais engajamento nos treinamentos comporativos da sua empresa</p>
               <a 
                 href="#beneficios"
                 class="btn-game btn-game--contrast --mx-auto js-goto-section py-3">
@@ -264,6 +328,8 @@
         <!--  end funcionalidades - espaço-->
         <section class="section section--contact" data-anchor="contato">
           <div class="section__content">
+            <p class="intro mx-auto"> Quer gerar mais motivação no aprendizado da sua equipe? <br>
+                Preencha o formulário abaixo e solicite o seu teste grátis!</p>
             <div class="container">
               <form 
                 action="" 
@@ -313,35 +379,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row d-none d-md-flex">
                   <div class="col-12 col-sm-8 col-md-6 mx-auto">
                     <div class="form-group">
-                      <label for="frm-empresa" class="form-control-label">LinkedIn</label>
+                      <label for="frm-link" class="form-control-label">Site ou LinkedIn</label>
                       <input
                         type="text"
-                        id="frm-empresa"
-                        name="empresa"
+                        id="frm-link"
+                        name="link"
                         class="form-control form-control-sm"
                         placeholder="LinkedIn"
                         required>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-12 col-sm-8 col-md-6 mx-auto">
-                    <div class="form-group">
-                      <label for="frm-empresa" class="form-control-label">Site</label>
-                      <input
-                        type="text"
-                        id="frm-empresa"
-                        name="empresa"
-                        class="form-control form-control-sm"
-                        placeholder="Seu site ou da sua empresa"
-                        required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
+                <div class="row d-none d-md-flex">
                   <div class="col-12 col-sm-8 col-md-6 mx-auto">
                     <label for="frm-mensagem" class="form-control-label">Mensagem</label>
                     <textarea
@@ -353,7 +405,7 @@
                       class="form-control form-control-sm"></textarea>
                   </div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-3 mt-md-5">
                   <div class="col-12 col-sm-8 col-md-6 mx-auto">
                     <button class="btn-game btn-game--primary p-3 w-100">
                       <span class="btn-game__text">Enviar</span>
@@ -433,6 +485,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="assets/js/mask/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.js"></script>
-    <script src="assets/js/scripts2.js?v=1.0.0-beta.2.4"></script>
+    <script src="assets/js/scripts2.js?v=1.0.0-beta.2.5"></script>
   </body>
 </html>

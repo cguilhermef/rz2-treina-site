@@ -2,6 +2,12 @@
 
 $(document).ready(function() {
 
+  $('.wrapper').show();
+  $('.loading').animate({
+    opacity: 0
+  }, 1000, function() {
+    $('.loading').hide();
+  });
   FormContact();
   FoneMask();
   const progress = Progress();
