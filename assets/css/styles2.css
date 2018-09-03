@@ -246,6 +246,11 @@ a.menu-bar__link.--active {
 .section--contact {
   background-color: #0a1f33;
 }
+.section--contact .section__content {
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
 /* .section--contact {
   overflow: hidden;
   overflow-y: scroll;
@@ -513,6 +518,15 @@ a.menu-bar__link.--active {
   color: #ff7e7e;
   font-size: 10px;
   margin-bottom: 0;
+}
+
+.footer {
+  align-items: center;
+  background-color: #000;
+  color: #666;
+  display: flex;
+  justify-content: space-around;
+  padding: .5rem 1rem;
 }
 
 @media(min-width: 544px) {
