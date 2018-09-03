@@ -660,9 +660,26 @@ a.menu-bar__link {
     width: auto;
   }
   .status-bar {
+    height: 42px;
     margin: 0 0 0 1rem;
     order: 1;
+    padding-left: 35px;
     width: 360px;
+  }
+  .status-bar__arrow {
+    height: auto;
+  }
+  .status-bar__count {
+    height: 42px;
+  }
+  .status-bar__count::before {
+    top: 14px;
+  }
+  .status-bar__progress-bar-count {
+    box-shadow: 3px -3px 0 2px #178fe6 inset, 0 6px 0 0px #99eeff inset;
+  }
+  a.menu-bar__link {
+    font-size: .875rem;
   }
   .board__module {
     --diff: 4.5%;
@@ -675,6 +692,9 @@ a.menu-bar__link {
   }
   .menu-bar__links {
     margin: 0 auto;
+  }
+  a.menu-bar__link {
+    font-size: 1rem;
   }
   .info-box--space-1 {
     bottom: 80%;
