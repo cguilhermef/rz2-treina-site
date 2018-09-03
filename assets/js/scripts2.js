@@ -78,10 +78,12 @@ const Progress = function() {
   return {
     actualIndex: 0,
     decrement: function() {
+      this.actualIndex = $('.section.active').index();
       this.set(this.actualIndex, this.actualIndex - 1);
       this.actualIndex -= 1;
     },
     increment: function() {
+      this.actualIndex = $('.section.active').index();
       this.set(this.actualIndex, this.actualIndex + 1);
       this.actualIndex += 1;
     },

@@ -645,6 +645,21 @@ a.menu-bar__link {
 }
 
 @media (min-width: 992px) {
+  .logo {
+    order: 3;
+  }
+  .menu-bar__content {
+    padding-bottom: 0;
+  }
+  .menu-bar__links {
+    order: 2;
+    width: auto;
+  }
+  .status-bar {
+    margin: 0 0 0 1rem;
+    order: 1;
+    width: 360px;
+  }
   .board__module {
     --diff: 4.5%;
   }
@@ -653,6 +668,9 @@ a.menu-bar__link {
 @media (min-width: 1200px) {
   .board__module {
     --diff: 5.5%;
+  }
+  .menu-bar__links {
+    margin: 0 auto;
   }
 }
 
