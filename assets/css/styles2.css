@@ -648,13 +648,16 @@ a.menu-bar__link {
 @media (min-width: 992px) {
   .logo {
     display: none;
-    order: 3;
+    margin-left: auto;
+    margin-right: auto;
+    order: 2;
   }
   .btn-game--contrast {
     align-self: center;
     min-width: 220px;
   }
   .menu-bar__content {
+    overflow: hidden;
     padding: 11px 0;
   }
   .--show-logo .logo {
@@ -663,8 +666,11 @@ a.menu-bar__link {
   .--show-logo .menu-bar__content {
     padding: 0;
   }
+  .--show-logo .menu-bar__links {
+    margin-left: 0;
+  }
   .menu-bar__links {
-    order: 2;
+    order: 3;
     width: auto;
   }
   .status-bar {
@@ -698,9 +704,9 @@ a.menu-bar__link {
   .board__module {
     --diff: 5.5%;
   }
-  .menu-bar__links {
+  /* .menu-bar__links {
     margin: 0 auto;
-  }
+  } */
   a.menu-bar__link {
     font-size: 1rem;
   }
@@ -746,9 +752,9 @@ a.menu-bar__link {
 
 @keyframes logoEnter {
   0% {
-    background-size: 0%;
+    transform: translate(0, 200%);
   }
   100% {
-    background-size: 100%;
+    transform: translate(0, 0);
   }
 }
