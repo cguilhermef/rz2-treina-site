@@ -12,7 +12,11 @@ $(document).ready(function() {
     licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
     anchors:['inicio', 'beneficios', 'funcionalidades', 'contato'],
     onLeave: function(origin, destination, direction){
+      if (destination.anchor === 'contato') {
+        LinkActivatedStyle('contato');
+      }
       if (destination.anchor === 'beneficios') {
+        LinkActivatedStyle('beneficios');
         timer = setTimeout(function() {
           mountainBoxes.activate('content-1');
         }, 800);
@@ -20,6 +24,7 @@ $(document).ready(function() {
         mountainBoxes.deactivateAll();
       }
       if (destination.anchor === 'funcionalidades') {
+        LinkActivatedStyle('funcionalidades');
         timer = setTimeout(function() {
           spaceBoxes.activate('content-5');
         }, 800);
@@ -29,13 +34,10 @@ $(document).ready(function() {
       if (destination.anchor !== 'inicio' ) {
         $('.wrapper').addClass('--show-logo');
       } else {
+        LinkActivatedStyle('inicio');
         $('.wrapper').removeClass('--show-logo');
       }
-      if ( direction === 'down' ) {
-        progress.increment();
-      } else {
-        progress.decrement();
-      }
+      progress.set(origin.index, destination.index);
     }
   });
   const board1 = ConnectElements().init($('#board-1')); 
@@ -76,22 +78,16 @@ $(document).ready(function() {
   });
 });
 
+const LinkActivatedStyle = function(section) {
+  $('.menu-bar__link').removeClass('--active');
+  $(`.menu-bar__link[href="#${section}"]`).addClass('--active');
+}
+
 const Progress = function() {
   const bar = $('.js-bar');
   const count = $('.js-count');
   let timer = null;
   return {
-    actualIndex: 0,
-    decrement: function() {
-      this.actualIndex = $('.section.active').index();
-      this.set(this.actualIndex, this.actualIndex - 1);
-      this.actualIndex -= 1;
-    },
-    increment: function() {
-      this.actualIndex = $('.section.active').index();
-      this.set(this.actualIndex, this.actualIndex + 1);
-      this.actualIndex += 1;
-    },
     set: function(actualIndex, nextIndex) {
       let result = nextIndex * 33;
       if (result > 66) {

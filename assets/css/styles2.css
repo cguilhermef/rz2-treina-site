@@ -59,6 +59,10 @@ a.menu-bar__link {
   text-decoration: none;
   text-transform: uppercase;
 }
+a.menu-bar__link:hover,
+a.menu-bar__link.--active {
+  color: #ff9500;
+}
 
 .menu-bar__content {
   align-items: center;
