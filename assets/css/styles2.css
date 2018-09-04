@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  background: transparent url("../img/bg-montanha.jpg") no-repeat 0 0/cover;
   height: 100%;
   width: 100%;
 }
@@ -230,7 +231,7 @@ a.menu-bar__link.--active {
 }
 
 .section {
-  background-color: #ff9500;
+  background-color: rgba(255, 149, 0, .9);
   position: relative;
   z-index: 0;
 }
@@ -336,13 +337,15 @@ a.menu-bar__link.--active {
 }
 
 .btn-game--contrast {
-  background-color: #2e8fe6;
+  /* background-color: #2e8fe6; */
+  background-color: #007be8;
   border: none;
   color: #fff;
   text-transform: none;
 }
 .btn-game--contrast::before {
-  background-color: #48b4e0;
+  /* background-color: #48b4e0; */
+  background-color: #009ede;
 }
 .btn-game--contrast:hover {
   box-shadow: 0 -2px 0 rgba(0, 0, 0, .15);
@@ -350,7 +353,8 @@ a.menu-bar__link.--active {
   cursor: pointer;
 }
 .btn-game--contrast:hover:not([disabled])::before {
-  background-color: #42a6ce;
+  /* background-color: #42a6ce; */
+  background-color: #01a4e4;
 }
 
 .board {

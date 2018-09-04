@@ -196,15 +196,16 @@ const ModuleTrigger = function() {
       if (!module$) {
         return;
       }
-      if (module$.data('activated')) {
+      if (module$.data('activated')) { 
         return;
       }
       this.deactivateAll();
       module$.addClass('--active');
+      module$.data('activated', true);
       return module$;
     },
     deactivateAll: function() {
-      this.modules$.each((k, el) => $(el).removeClass('--active'));
+      this.modules$.each((k, el) => $(el).removeClass('--active').data('activated', false));
     },
     modules$: null,
     init: function(boardId) {
@@ -253,8 +254,6 @@ const InfoBoxControl = function() {
     activate: function(contentId) {
       const self = this;
       const target$ = this.moduleTrigger.getModuleByDataContent(contentId);
-      this.moduleTrigger.deactivateAll();
-      this.boxControl.deactivateAll();
       this.moduleTrigger.activate(contentId);
       this.boxControl.activate(contentId);
       this.timer = clearTimeout(this.timer);
